@@ -1,0 +1,42 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div id="tag-cloud">
+ <h2><?php echo $this->__('Popular Tags'); ?></h2>
+  <div>
+		<script type="text/javascript">
+		var firstcolor = '#000';
+		var secondcolor = '#000';
+		var hovercolor = '#000';
+		var links = ' <?php foreach ($this->getTags() as $tag){?>%3Ca+href%3D%27http%3A%2F%2F<?php echo str_replace("http://","",$tag->getTaggedProductsUrl()) ?>%27+class%3D%27tag-link-19%27+title%3D%2776+topics%27+rel%3D%22tag%22+style%3D%27font-size%3A+<?php echo rand(7,30); ?>pt%3B%27%3E<?php echo $this->htmlEscape($tag->getName()); ?>%3C%2Fa%3E<?php }?>';
+		//<![CDATA[
+		document.write('<embed width="234" height="179" flashvars="tcolor=0x'+firstcolor+'&amp;tcolor2=0x'+secondcolor+'&amp;hicolor=0x'+hovercolor+'&amp;tspeed=200&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E'+links+'%3C%2Ftags%3E" allowscriptaccess="always" wmode="transparent" quality="high" bgcolor="#000000" name="tagcloudflash" id="tagcloudflash" src="<?php echo $this->getSkinUrl('js/'); ?>tagcloud.swf" type="application/x-shockwave-flash"/>');
+		//]]>
+		</script>
+
+	</div>
+<p><a href="<?php echo $this->getUrl('tag/list') ?>"><?php echo $this->__('View All Tags') ?></a></p>
+</div>

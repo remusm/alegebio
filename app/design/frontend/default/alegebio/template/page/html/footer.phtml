@@ -1,0 +1,183 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+ 
+?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/'); ?>jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/'); ?>jquery.jcarousel.min.js"></script>
+<script type="text/javascript">
+	$.noConflict();
+	jQuery(document).ready(function(){
+
+        jQuery('#open-seo').click(function(){
+    	jQuery('#text-seo-background').fadeIn('fast', function() {
+    			jQuery('#text-seo').fadeIn('fast');
+    		});
+    	});
+    	jQuery('#close-seo, #text-seo-background').click(function(){
+    		jQuery('#text-seo').fadeOut('fast', function() {
+    			jQuery('#text-seo-background').fadeOut('fast');
+    		});
+    	});
+
+		// function mycarousel_initCallback(carousel)
+		// {
+		// 	carousel.buttonNext.bind('click', function() {carousel.startAuto(0);});
+		// 	carousel.buttonPrev.bind('click', function() {carousel.startAuto(0);});
+		// 	carousel.clip.hover(function() {carousel.stopAuto();}, function() {carousel.startAuto();});
+		// };
+
+		// jQuery('#mycarousel').jcarousel({
+		// 	auto: 2, wrap:'last', initCallback: mycarousel_initCallback
+
+		// });
+
+	});
+</script>
+
+		<div id="brands">
+			<!-- <h2>Producatori:</h2> -->
+			<?php //echo $this->getChildHtml('footer_manufacturers') ?>			
+		</div>
+		<div id="footer-items">
+<?php echo $this->getChildHtml('footer_links') ?>
+<?php /*
+<p class="bugs"><?php echo $this->__('Help Us to Keep Magento Healthy') ?> - <a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><strong><?php echo $this->__('Report All Bugs') ?></strong></a> <?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></p>
+*/
+if(in_array($_SERVER['REQUEST_URI'], array('/alimente-bio', '/produse-bio', '/produse-ecologice.html', '/magazin-bio'))):             
+?>
+<ul class="sub-menu seo-link"><li><a id="open-seo" href="javascript:void(0)">Mai mult</a></li></ul>
+<?php
+endif;
+?>
+<address id="copy">Copyright <?php echo $this->getCopyright() ?></address>
+				<div id="developer" class="link"><a href="http://www.innobyte.ro" rel="external" title="Serious Web Development">innobyte.ro</a></div>
+				<!--<div id="notif">Prelucrare date cu caracter personal: S.C. Alege Bio S.R.L. este inregistrata in registrul de evidenta a prelucrarilor de date cu caracter personal sub nr. 17941//	0.</div>-->
+				<div id="notif">
+				Sc Miali Consulting SRL, J40\915\2013, RO 31146228, Sector 3, Bucuresti, RIB Bank, RO28ROIN910800136630RO01
+				</div>
+</div>
+
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/'); ?>jquery.cycle.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/'); ?>cufon.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/'); ?>lib/jquery.dimensions.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/'); ?>jquery.accordion.js"></script>
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/'); ?>frontend.js"></script>
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function($) {
+	$('#products-drop li:last-child').css('border-bottom', '0');
+	$('#search').attr('value', "cauta");
+	$('#search').focus(function(){
+		if($('#search').attr('value') == 'cauta')
+			$('#search').attr('value', '');
+	});
+	$('#search').blur(function(){
+		if($('#search').attr('value') == '')
+			$('#search').attr('value', 'cauta');
+	});
+	$('#newsletter').attr('value', "newsletter");
+	$('#newsletter').focus(function(){
+		if($('#newsletter').attr('value') == 'newsletter')
+			$('#newsletter').attr('value', '');
+	});
+	$('#newsletter').blur(function(){
+		if($('#newsletter').attr('value') == '')
+			$('#newsletter').attr('value', 'newsletter');
+	});
+
+	$('#slider').children('.widget').each(function(){
+		var img = $(this).children().eq(0).find('img');
+		var text = $(this).children().eq(1).text();
+		img.attr('alt', text);
+		$(this).replaceWith(img);
+	});
+	$('#slider').children('img').wrapAll('<div id="images" />');
+	$('#slider').append('<div id="controls"></div>');
+		$('#query').focus(function(){
+			if($(this).val() == 'cauta in catalog')
+				$(this).attr('value', '');
+		});
+			$('#query').focusout(function(){
+						if($(this).val() == '')
+				$(this).attr('value', 'cauta in catalog');
+			});
+			$('#newsletter-email').focus(function(){
+			if($(this).val() == 'adresa valida de email')
+				$(this).attr('value', '');
+		});
+			$('#newsletter-email').focusout(function(){
+						if($(this).val() == '')
+				$(this).attr('value', 'adresa valida de email');
+			});
+		$('#images').cycle({ pager:'#controls',  after:     function() {
+				$('#caption').html(this.alt);
+			}
+	});
+		if($('.breadcrumbs').length == 0 )
+		{
+			$('.page-title').css('top', 0);
+		}
+		$('#caption').css('display', 'block');
+		$("#products-drop > li").each(function(){
+			if($(this).find('ul').length > 0)
+			{
+				$(this).children('a').addClass('drop');
+				$(this).find('li').each(function(){
+					if($(this).find('ul').length > 0)
+						$(this).children('a').addClass('drop-ul');
+				});
+			}
+		});
+		$('.drop').click(function(){
+		if($(this).parent().hasClass('opened'))
+				$(this).parent().removeClass('opened').children('ul').slideUp();
+			else
+			{
+					$(this).parent().parent().children('.opened').removeClass('opened').children('ul').slideUp();
+				$(this).parent().addClass('opened').children('ul').slideDown();
+			}
+			return false;
+		});
+		$('.drop-ul').click(function(){
+			if($(this).parent().hasClass('opened'))
+				$(this).parent().removeClass('opened').children('ul').slideUp();
+			else
+			{
+				$(this).parent().parent().children('.opened').removeClass('opened').children('ul').slideUp();
+				$(this).parent().addClass('opened').children('ul').slideDown();
+			}
+			return false;
+		});
+		$('#products-drop .active').children('a').css('font-weight', 'bold').parent().parent().slideDown().prev().parent().addClass('opened');
+				$('.data-table tr:nth-child(2n+1)').css('background', '#F7FFEF');
+});
+/* ]]> */
+</script>

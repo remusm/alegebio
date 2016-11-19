@@ -1,0 +1,2 @@
+[14-Nov-2016 12:27:52 Europe/Bucharest] PHP Parse error:  syntax error, unexpected '$i' (T_VARIABLE) in /home/icietla/alegebio.funsale.ro/import_products_1.php on line 115
+[14-Nov-2016 12:46:27 Europe/Bucharest] PHP Parse error:  syntax error, unexpected ')' in /home/icietla/alegebio.funsale.ro/import_products_1.php on line 86
